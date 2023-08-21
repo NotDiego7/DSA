@@ -30,4 +30,5 @@ while list1:
     print(list1.val)
     list1 = list1.next
 
-#TODO: Left off at 03:40 on design requirements (system architecture)
+#TODO: Left off at 03:40 on design requirements (system architecture
+#NOTE: ...B
