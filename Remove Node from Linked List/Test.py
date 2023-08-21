@@ -3,7 +3,15 @@ class Node:
         self.val = val
         self.next = None
 
-t = Node("t")
+node1 = Node("h")
+node2 = Node("i")
+node3 = Node("j")
+node4 = Node("i")
+
+node1.next = node2
+node2.next = node3
+node3.next = node4
+
 
 #TODO: Remove only the first instance of target value AND redirect node.next
 #
@@ -12,20 +20,17 @@ def algorithm(list1, target):
     prev = None
     curr = list1
 
-    if curr.next is None:
-        return None
+    if curr.val == target:
+        return curr.next
 
-    while curr:
-        if curr.val == target and prev is None:
-            list1 = list1.next
-            return list1        
-        elif curr.val == target:
+    while curr:  
+        if curr.val == target:
             prev.next = curr.next
             return list1
         prev = curr
         curr = curr.next
 
-list1 = algorithm(t, "t")
+list1 = algorithm(node1, "i")
 while list1:
     print(list1.val)
     list1 = list1.next
