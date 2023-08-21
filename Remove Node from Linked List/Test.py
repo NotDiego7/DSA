@@ -31,4 +31,4 @@ while list1:
     list1 = list1.next
 
 #TODO: Left off at 03:40 on design requirements (system architecture
-#NOTE: ...B
+#NOTE: ...
