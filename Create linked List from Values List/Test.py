@@ -3,54 +3,26 @@ class Node:
         self.val = val
         self.next = None
 
-#   999
-#  +  6
-#  ----
-#  1005
+#TODO: Write a function that takes in a list of values as an argument.
+#TODO: The function should create a linked list containing each item of the list as the values of the nodes. 
+#Constraints:
 
-a1 = Node(9)
-a2 = Node(9)
-a3 = Node(9)
-a1.next = a2
-a2.next = a3
-# 9 -> 9 -> 9
+def algorithm(values):
+    if len(values) == 1:
+        return Node(values[0])
+    if values:
+        head = Node(values[0])
+        curr = head
+        for value in values[1:]:
+            new_node = Node(value)
+            curr.next = new_node
+            curr = curr.next
+        return head
 
-b1 = Node(6)
-# 6
-
-add_lists(a1, b1)
-# 5 -> 0 -> 0 -> 1
-
-#TODO: Write a function that takes in the head of two linked lists, each representing a number. 
-#TODO: The nodes of the linked lists contain digits as values. The nodes in the input lists are reversed
-#TODO: The function should return the head of a new linked list representing the sum of the input lists reversed.
-
-def algorithm(list1, list2):
-    first_num = ""
-    second_num = ""
-    
-    while list1:
-        first_num = str(list1.val) + first_num
-        list1 = list1.next
-
-    while list2:
-        second_num = str(list2.val) + second_num
-        list2 = list2.next
-
-    sum_total = int(first_num) + int(second_num)
-    sum_total = str(sum_total)
-    # ---------------------------------------------------------------------------- #
-    new_node = Node(None)
-    head = new_node
-    for i in sum_total[::-1]:
-        curr = Node(int(i))
-        new_node.next = curr
-        new_node = new_node.next
-    return head.next
+    return None
 
 
-
-list1 = algorithm(a1, b1)
+list1 = algorithm([1, 7, 1, 8])
 
 
 
@@ -58,3 +30,8 @@ list1 = algorithm(a1, b1)
 while list1:
     print(list1.val)
     list1 = list1.next
+
+
+
+
+#NOTE: Left off at 03:40 on design requirements (system architecture)
