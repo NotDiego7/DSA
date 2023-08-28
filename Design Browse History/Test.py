@@ -1,8 +1,8 @@
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, previous=None, next=None):
         self.val = val
-        self.next = None
-        self.previous = None
+        self.previous = previous
+        self.next = next
 
 """
 You have a browser of one tab where you start on the homepage.
@@ -15,21 +15,21 @@ class BrowserHistory:
     def __init__(self, homepage: str):
         self.curr = Node(homepage)
 
+    # O(1)
     def visit(self, url: str) -> None:
-        new_node = Node(url)
-        new_node.previous = self.curr
+        new_node = Node(url, previous= self.curr)
         self.curr.next = new_node
         self.curr = new_node
         return None
 
-
+    # O(n)
     def back(self, steps: int) -> str:
         while self.curr.previous and steps:
             self.curr = self.curr.previous
             steps -= 1
         return self.curr.val
 
-
+    # O(n)
     def forward(self, steps: int) -> str:
         while self.curr.next and steps:
             self.curr = self.curr.next
