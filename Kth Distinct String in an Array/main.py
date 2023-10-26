@@ -30,30 +30,63 @@ Since k == 2, "a" is returned.
 # ---------------------------------------------------------------------------- #
 #TODO:
 # --------------------------------- First Try -------------------------------- #
+arr = ["y","napli","jfqjc","mbl","oeush"]
+k = 3
 
 def algorithm():
     if len(arr) < 2:
         return ""
     # ---------------------------------------------------------------------------- #
     first_pointer = 0
-    sec_pointer = len(arr)
+    sec_pointer = len(arr) - 1
     unique_arr = []
     nonunique_arr = []
+
+    unique_reference = 1
     
+    while first_pointer <= sec_pointer:
+        # ------------------------ If in nonunique_arr Already ----------------------- #
+        if arr[first_pointer] in nonunique_arr and arr[first_pointer] not in unique_arr:
+            first_pointer += 1
+        # ------------------------- If found to be nonunique ------------------------- #
+        elif arr[first_pointer] in unique_arr:                                          # Removed: arr[first_pointer] in nonunique_arr or...
+            unique_arr.remove(arr[first_pointer])
+            nonunique_arr.append(arr[first_pointer])
+            first_pointer += 1
+        # --------------------------------- If Unique -------------------------------- #
+        else:
+            if len(unique_arr) > 0:
+                unique_arr.insert(unique_reference - 2, arr[first_pointer])
+            else:
+                unique_arr.append(arr[first_pointer])
+            first_pointer += 1
 
-    if arr[first_pointer or sec_pointer] in unique_arr and not unique_arr[first_pointer or sec_pointer]
 
-    if arr[first_pointer or sec_pointer] in nonunique_arr or arr[first_pointer or sec_pointer] in unique_arr:
-        unique_arr.remove(arr[first_pointer])
-        nonunique_arr.append(arr[first_pointer])
-        first_pointer += 1
+
+        # ------------------------------ Second Pointer ------------------------------ #
+        if arr[sec_pointer] in nonunique_arr and arr[sec_pointer] not in unique_arr:
+            sec_pointer -= 1
+
+        elif arr[sec_pointer] in unique_arr:
+            unique_arr.remove(arr[sec_pointer])
+            nonunique_arr.append(arr[sec_pointer])
+            sec_pointer -= 1
+
+        else:
+            if len(unique_arr) == 1:
+                unique_arr.append(arr[sec_pointer])
+                
+            else:
+                unique_arr.insert(unique_reference - 1, arr[sec_pointer])
+            sec_pointer -= 1
+            unique_reference += 2
+# -------------------------------- Final Case -------------------------------- #
+    if len(unique_arr) >= k:
+        return unique_arr[k - 1]
     else:
-        unique_arr.append(arr[first_pointer])
-        first_pointer += 1
-
+        return ""
 
 
 print(algorithm())
-
 
 # O(n * b) Time complexity 84.98% | O(n) Space complexity Beats 65.29%
