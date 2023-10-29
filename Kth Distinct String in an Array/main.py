@@ -49,7 +49,7 @@ def algorithm():
         if arr[first_pointer] in nonunique_arr and arr[first_pointer] not in unique_arr:
             first_pointer += 1
         # ------------------------- If found to be nonunique ------------------------- #
-        elif arr[first_pointer] in unique_arr:                                          # Removed: arr[first_pointer] in nonunique_arr or...
+        elif arr[first_pointer] in unique_arr:
             unique_arr.remove(arr[first_pointer])
             nonunique_arr.append(arr[first_pointer])
             first_pointer += 1
