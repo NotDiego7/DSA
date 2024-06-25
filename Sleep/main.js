@@ -15,4 +15,7 @@ async function sleep(millis) {
  * sleep(100).then(() => console.log(Date.now() - t)) // 100
  */
 
+// Time Complexity = O(1) constant time (time does not increase with the input size of millis)
+// Space Complexity = O(1) constant space (space does not increase with the input size of millis)
+
 sleep(5000)

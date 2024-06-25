@@ -19,4 +19,9 @@ function main () {
     }
     return matrizDeRegreso
 }
+
+// Time Complexity = O(n) | n is each iteration in our for-loop, every other operation within the iteration is constant
+// Space Complexity = O(n) | n is each element we, post-transforming, push into returnedArray, everything else is constant
+
+
 console.log(main())
